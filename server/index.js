@@ -26,8 +26,6 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-let USERS = { 1: { id: v4(), name: "Ivan" }, 2: { id: v4(), name: "Vova" } };
-
 app.post("/auth/login", async (req, res) => {
   try {
     const user = await UserModel.findOne({
