@@ -6,7 +6,7 @@ import mongoose from "mongoose";
 import { validationResult } from "express-validator";
 import { registerValidation } from "./validations/auth.js";
 import UserModel from "./models/User.js";
-import User from "./models/User.js";
+
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
@@ -108,16 +108,5 @@ app.post("/auth/register", registerValidation, async (req, res) => {
     });
   }
 });
-
-//app.get("/api/users", (req, res) => {
-//  res.status(200).json(USERS);
-//});
-//
-//app.post("/api/users", (req, res) => {
-//  console.log(req.body);
-//  res.json({
-//    status: 201,
-//  });
-//});
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
