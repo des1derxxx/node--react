@@ -33,11 +33,8 @@ app.post("/auth/login", loginValidation, UserController.login);
 app.get("/auth/me", checkAuth, UserController.register);
 app.post("/auth/register", registerValidation, UserController.getMe);
 
-app.post(
-  "/posts/create",
-  checkAuth,
-  postCreateValidation,
-  PostController.create
-);
+app.post("/posts", checkAuth, postCreateValidation, PostController.create);
+
+app.get("/posts", PostController.getAll);
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
