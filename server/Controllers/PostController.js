@@ -22,7 +22,7 @@ export const create = async (req, res) => {
 
 export const getAll = async (req, res) => {
   try {
-    const posts = await PostModel.find();
+    const posts = await PostModel.find().populate("user").exec();
     res.json(posts);
   } catch (err) {
     res.status(500).json({
