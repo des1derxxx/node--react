@@ -3,7 +3,7 @@ import "dotenv/config";
 import cors from "cors";
 import { v4 as uuidv4, v4 } from "uuid";
 import mongoose from "mongoose";
-import { registerValidation } from "./validations/auth.js";
+import { registerValidation, loginValidation } from "./validations.js";
 import checkAuth from "./utils/checkAuth.js";
 import User from "./models/User.js";
 import * as UserController from "./Controllers/UserController.js";
@@ -24,7 +24,7 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.post("/auth/login", UserController.login);
+app.post("/auth/login", loginValidation, UserController.login);
 
 app.get("/auth/me", checkAuth, UserController.register);
 
